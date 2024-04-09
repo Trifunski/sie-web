@@ -6,10 +6,36 @@ use Filament\Pages\Page;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components;
+
 use App\Models\Section as ModelsSection;
 
 class Home extends Page
 {
+
+    public $Herotitle;
+    public $HeroDescription;
+    public $HeroButtonText;
+    public $HeroButtonLink;
+    public $Features;
+    public $FeatureTitle;
+    public $FeatureDescription;
+    public $FeatureImage;
+    public $DualFocusTitle;
+    public $DualFocusDescription;
+    public $CoreSkillsTitle;
+    public $LanguageTitle;
+    public $LanguageDescription;
+    public $LanguageButtonText;
+    public $LanguageButtonLink;
+    public $TechTitle;
+    public $TechDescription;
+    public $InnovativeTitle;
+    public $InnovativeDescription;
+    public $ProgrammingTitle;
+    public $ProgrammingDescription;
+    public $Questions;
+    public $Answer;
+
     protected static ?string $navigationIcon = 'heroicon-o-document';
 
     protected static ?string $navigationGroup = 'Landing';
@@ -18,23 +44,45 @@ class Home extends Page
 
     protected static string $view = 'filament.pages.home';
 
-    public $image = [];
-    public $sections = [];
+    public $data = [];
 
     public function mount(): void
     {
-        $this->sections = ModelsSection::all()->keyBy('name')->toArray();
-        $this->form->fill([
-            'HeroBanner' => $this->sections['HeroBanner'],
-            'FeatureOverview' => $this->sections['FeatureOverview'],
-            'DualFocus' => $this->sections['DualFocus'],
-            'CoreSkills' => $this->sections['CoreSkills'],
-            'LanguageLearning' => $this->sections['LanguageLearning'],
-            'TechEducation' => $this->sections['TechEducation'],
-            'InnovativeTeaching' => $this->sections['InnovativeTeaching'],
-            'ProgrammingMastery' => $this->sections['ProgrammingMastery'],
-            'FAQSection' => $this->sections['FAQSection'],
-        ]);
+        $sections = ModelsSection::with(['features', 'faqs'])->get();
+
+        foreach ($sections as $section) {
+            
+            $this->data[$section->name] = $section->toArray();
+
+            $sectionData['faqs'] = $section->faqs->toArray();
+
+            $this->data[$section->name] = array_merge($this->data[$section->name], $sectionData);
+        }
+
+        /* dd($this->data['FeatureOverview']['features'][0]['image']); */
+
+        $this->Herotitle = $this->data['HeroBanner']['title'];
+        $this->HeroDescription = $this->data['HeroBanner']['description'];
+        $this->HeroButtonText = $this->data['HeroBanner']['button_text'];
+        $this->HeroButtonLink = $this->data['HeroBanner']['button_url'];
+        $this->FeatureTitle = $this->data['FeatureOverview']['title'];
+        $this->FeatureDescription = $this->data['FeatureOverview']['description'];
+        $this->Features = $this->data['FeatureOverview']['features'];
+        foreach ($this->Features as $feature) {
+            $this->FeatureImage = $feature['image'];
+        }
+        $this->DualFocusTitle = $this->data['DualFocus']['title'];
+        $this->DualFocusDescription = $this->data['DualFocus']['description'];
+        $this->LanguageTitle = $this->data['LanguageLearning']['title'];
+        $this->LanguageDescription = $this->data['LanguageLearning']['description'];
+        $this->LanguageButtonText = $this->data['LanguageLearning']['button_text'];
+        $this->LanguageButtonLink = $this->data['LanguageLearning']['button_url'];
+        $this->TechTitle = $this->data['TechEducation']['title'];
+        $this->TechDescription = $this->data['TechEducation']['description'];
+        $this->InnovativeTitle = $this->data['InnovativeTeaching']['title'];
+        $this->InnovativeDescription = $this->data['InnovativeTeaching']['description'];
+        $this->ProgrammingTitle = $this->data['ProgrammingMastery']['title'];
+        $this->ProgrammingDescription = $this->data['ProgrammingMastery']['description'];
     } 
 
     protected function getFormSchema(): array
@@ -67,7 +115,10 @@ class Home extends Page
                         ->schema([
                             Components\FileUpload::make('FeatureImage')
                                 ->label('Image')
-                                ->placeholder('Image'),
+                                ->placeholder('Image')
+                                ->image()
+                                ->disk('public')
+                                ->directory('img')
                         ])
                         ->createItemButtonLabel('Add Features')
                         ->collapsed()
@@ -101,43 +152,43 @@ class Home extends Page
                 ]),
             Section::make('LanguageLearning')
                 ->schema([
-                    Components\TextInput::make('Herotitle')
+                    Components\TextInput::make('LanguageTitle')
                         ->label('Title')
                         ->placeholder('Title'),
-                    Components\TextInput::make('HeroDescription')
+                    Components\TextInput::make('LanguageDescription')
                         ->label('Description')
                         ->placeholder('Description'),
-                    Components\TextInput::make('HeroButtonText')
+                    Components\TextInput::make('LanguageButtonText')
                         ->label('Button Text')
                         ->placeholder('Button Text'),
-                    Components\TextInput::make('HeroButtonLink')
+                    Components\TextInput::make('LanguageButtonLink')
                         ->label('Button Link')
                         ->placeholder('Button Link'),
                 ]),
             Section::make('TechEducation')
                 ->schema([
-                    Components\TextInput::make('DualFocusTitle')
+                    Components\TextInput::make('TechTitle')
                         ->label('Title')
                         ->placeholder('Title'),
-                    Components\Textarea::make('DualFocusDescription')
+                    Components\Textarea::make('TechDescription')
                         ->label('Description')
                         ->placeholder('Description'),
                 ]),
             Section::make('InnovativeTeaching')
                 ->schema([
-                    Components\TextInput::make('DualFocusTitle')
+                    Components\TextInput::make('InnovativeTitle')
                         ->label('Title')
                         ->placeholder('Title'),
-                    Components\Textarea::make('DualFocusDescription')
+                    Components\Textarea::make('InnovativeDescription')
                         ->label('Description')
                         ->placeholder('Description'),
                 ]),
             Section::make('ProgrammingMastery')
                 ->schema([
-                    Components\TextInput::make('DualFocusTitle')
+                    Components\TextInput::make('ProgrammingTitle')
                         ->label('Title')
                         ->placeholder('Title'),
-                    Components\Textarea::make('DualFocusDescription')
+                    Components\Textarea::make('ProgrammingDescription')
                         ->label('Description')
                         ->placeholder('Description'),
                 ]),
@@ -160,34 +211,7 @@ class Home extends Page
 
     public function save()
     {
-        $this->validate();
-
-        DB::beginTransaction();
-        try {
-            foreach ($this->form->getState() as $sectionName => $sectionData) {
-                // Aquí deberías tener una lógica para actualizar cada sección basada en su nombre.
-                // Esto es un ejemplo simple; adapta según tus necesidades y estructura de datos.
-                ModelsSection::updateOrCreate(
-                    ['name' => $sectionName], 
-                    $sectionData
-                );
-            }
-            DB::commit();
-
-            Notification::make()
-                ->title('Guardado correctamente')
-                ->icon('heroicon-o-document-text')
-                ->iconColor('success')
-                ->send();
-        } catch (\Exception $e) {
-            DB::rollBack();
-            Notification::make()
-                ->title('Error al guardar')
-                ->icon('heroicon-o-exclamation')
-                ->iconColor('danger')
-                ->body($e->getMessage())
-                ->send();
-        }
+        
     }
 
 }

@@ -24,7 +24,7 @@
                         </div>
                         <div class="ml-6 grow">
                             <!-- Texto #1 -->
-                            <p class="text-lg font-semibold text-gray-700">Dirección</p>
+                            <p class="text-lg font-semibold text-gray-700">Address</p>
                             <p class="mt-2 text-sm text-gray-500">Calle Antonio María Manrique, 3, 35011 Las Palmas de Gran Canaria, Las Palmas</p>
                         </div>
                     </div>
@@ -82,8 +82,8 @@
     </div>
 
     <!-- MAP -->
-    <div class="relative w-full overflow-hidden" style="padding-top: 56.25%;">
-        <iframe class="absolute top-0 left-0 w-full h-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1759.352339695414!2d-15.438616530384266!3d28.125028581245314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc40950e441745db%3A0xa21f99b41e7bb3ca!2sC.%20Antonio%20Mar%C3%ADa%20Manrique%2C%203%2C%2035011%20Las%20Palmas%20de%20Gran%20Canaria%2C%20Las%20Palmas!5e0!3m2!1ses!2ses!4v1712051638152!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="aspect-w-7 flex justify-center my-20 aspect-h-5 relative w-full">
+        <iframe class="top-0 left-0 w-full h-full border-0" style="width: 700px; height: 500px; border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1759.352339695414!2d-15.438616530384266!3d28.125028581245314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc40950e441745db%3A0xa21f99b41e7bb3ca!2sC.%20Antonio%20Mar%C3%ADa%20Manrique%2C%203%2C%2035011%20Las%20Palmas%20de%20Gran%20Canaria%2C%20Las%20Palmas!5e0!3m2!1ses!2ses!4v1712051638152!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
 	<!-- FOOTER -->

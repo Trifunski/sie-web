@@ -11,8 +11,6 @@ class Feature extends Model
 
     protected $fillable = [
         'section_id',
-        'title',
-        'description',
         'image',
     ];
 

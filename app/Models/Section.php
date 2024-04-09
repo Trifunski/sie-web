@@ -10,19 +10,13 @@ class Section extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 
-        'title', 
-        'description', 
-        'button_text', 
-        'button_link'
+        'name',
+        'title',
+        'description',
     ];
 
     public function features() {
         return $this->hasMany(Feature::class);
-    }
-
-    public function coreSkillsBlocks() {
-        return $this->hasMany(CoreSkill::class);
     }
 
     public function faqs() {
