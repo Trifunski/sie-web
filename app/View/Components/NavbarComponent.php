@@ -20,7 +20,7 @@ class NavbarComponent extends Component
         $this->title = $title;
         $this->links = [
             ['url' => '/', 'name' => 'Home'],
-            ['url' => '/about', 'name' => 'About Us'],
+            /* ['url' => '/about', 'name' => 'About Us'], */
             ['url' => '/contact', 'name' => 'Contact'],
         ];
     }

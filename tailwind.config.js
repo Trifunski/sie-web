@@ -7,6 +7,15 @@ export default {
   ],
   theme: {
     extend: {},
+    colors: {
+      "primary": "#CCDBDC",
+      "secondary": "#9AD1D4",
+      "tertiary": "#80CED7",
+      "quaternary": "#007EA7",
+      "quinary": "#003249",
+      "white": "#ffffff",
+      "black": "#000000",
+    }
   },
   plugins: [],
 }
