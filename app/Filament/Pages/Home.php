@@ -76,6 +76,7 @@ class Home extends Page
         }
         $this->DualFocusTitle = $this->data['DualFocus']['title'];
         $this->DualFocusDescription = $this->data['DualFocus']['description'];
+        $this->CoreSkillsTitle = $this->data['CoreSkills']['title'];
         $this->LanguageTitle = $this->data['LanguageLearning']['title'];
         $this->LanguageDescription = $this->data['LanguageLearning']['description'];
         $this->LanguageButtonText = $this->data['LanguageLearning']['button_text'];
@@ -86,6 +87,8 @@ class Home extends Page
         $this->InnovativeDescription = $this->data['InnovativeTeaching']['description'];
         $this->ProgrammingTitle = $this->data['ProgrammingMastery']['title'];
         $this->ProgrammingDescription = $this->data['ProgrammingMastery']['description'];
+        $this->QuestionsTitle = $this->data['FAQSection']['title'];
+        $this->QuestionsDescription = $this->data['FAQSection']['description'];
         $this->Questions = $this->data['FAQSection']['faqs'];
     } 
 
