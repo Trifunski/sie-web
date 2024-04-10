@@ -3,18 +3,24 @@
 <x-head-component :title="'SIE'" />
 <body class="antialiased">
 	<x-navbar-component title="SIE" />
+
 	<!-- Hero -->
 	<section>
 		<div class="max-w-screen-xl px-8 mx-auto flex flex-col lg:flex-row items-start">
 			<!--Left Col-->
 			<div class="flex flex-col w-full lg:w-6/12 justify-center lg:pt-24 items-start text-center lg:text-left mb-5 md:mb-0">
 				<h1 data-aos="fade-right" data-aos-once="true" class="my-4 text-5xl font-bold leading-tight text-quaternary">
-					<span class="text-secondary">Unlock</span> your digital potential
+				@php
+					$titleWords = explode(' ', $sections[0]['title']);
+					$firstWord = array_shift($titleWords);
+					$remainingWords = implode(' ', $titleWords);
+				@endphp
+				<span class="text-secondary">{{ $firstWord }}</span> {{ $remainingWords }}
 				</h1>
-				<p data-aos="fade-down" data-aos-once="true" data-aos-delay="300" class="leading-normal text-quinary text-2xl mb-8">Join our global community for top Spanish and coding courses for all ages.</p>
+				<p data-aos="fade-down" data-aos-once="true" data-aos-delay="300" class="leading-normal text-quinary text-2xl mb-8">{{ $sections[0]['description'] }}</p>
 				<div data-aos="fade-up" data-aos-once="true" data-aos-delay="700" class="w-full md:flex items-center justify-center lg:justify-start md:space-x-5">
-					<a href="/contact" class="lg:mx-0 bg-quinary text-white text-xl font-bold rounded-full py-4 px-9 focus:outline-none transform transition hover:scale-110 duration-300 ease-in-out">
-						Contact us
+					<a href="{{$sections[0]['button_url']}}" class="lg:mx-0 bg-quinary text-white text-xl font-bold rounded-full py-4 px-9 focus:outline-none transform transition hover:scale-110 duration-300 ease-in-out">
+						{{ $sections[0]['button_text'] }}
 					</a>
 				</div>
 			</div>
@@ -52,8 +58,15 @@
 
 		<!-- Empowering Future Generations -->
 		<section class="max-w-4xl mx-auto">
-			<h1 class="text-center mb-3 text-quaternary font-bold text-2xl">Empowering <span class="text-secondary">Future Generations</span> Together</h1>
-			<p class="text-center text-quinary">Uniting Language and Tech: Over 1.1 million learners and global companies choose us for growth.</p>
+			<h1 class="text-center mb-3 text-quaternary font-bold text-2xl">
+				@php
+					$titleWords = explode(' ', $sections[1]['title']);
+					$firstWord = array_shift($titleWords);
+					$remainingWords = implode(' ', $titleWords);
+				@endphp
+				<span class="text-secondary">{{ $firstWord }}</span> {{ $remainingWords }}
+			</h1>
+			<p class="text-center text-quinary">{{ $sections[1]['description'] }}</p>
 			<div class="grid grid-cols-2 mt-14 lg:grid-cols-2 gap-4 justify-items-center">
 				<a href="https://es.alg.academy/" target="_blank"><img class="h-7 filter grayscale opacity-70" src="img/company/logoAlgorithmics.svg" alt="Algorithmics Logo"></a>
 				<a href="https://palabras-languageschool.com/" target="_blank"><img class="h-12 filter grayscale opacity-70" src="img/company/logoPalabras.png" alt="Palabras Logo"></a>
@@ -64,8 +77,17 @@
 		<section class="sm:flex items-center sm:space-x-8 my-40">
 			<div data-aos="fade-right" class="sm:w-1/2 relative">
 				<div class="bg-primary rounded-full absolute w-12 h-12 z-0 -left-4 -top-3 animate-pulse"></div>
-				<h1 class="font-semibold text-2xl relative z-50 text-quaternary lg:pr-10">Blending Languages and Tech: <span class="text-secondary">Like a classroom, but boundless.</span></h1>
-				<p class="py-5 text-quinary lg:pr-32">Our integrated platform ensures efficient management of schedules, attendance, and more, embodying the flexibility and security of modern education.</p>
+				<h1 class="font-semibold text-2xl relative z-50 text-quaternary lg:pr-10">
+				@php
+					$titleParts = explode(':', $sections[2]['title'], 2);
+					$firstPart = $titleParts[0] . ':';
+					$secondPart = count($titleParts) > 1 ? $titleParts[1] : '';
+				@endphp
+
+				<h1 class="font-semibold text-2xl relative z-50 text-quaternary lg:pr-10">
+					{{ $firstPart }} <span class="text-secondary">{{ $secondPart }}</span>
+				</h1>
+				<p class="py-5 text-quinary lg:pr-32">{{ $sections[2]['description'] }}</p>
 			</div>
 			<div data-aos="fade-left" class="sm:w-1/2 relative mt-10 sm:mt-0">
 				<div class="floating w-24 h-24 absolute rounded-lg z-0 -top-3 -left-3 bg-quaternary"></div>
@@ -82,7 +104,13 @@
 				<div style="background: #00668c;" class="w-5 h-5 rounded-full absolute z-0 right-52 bottom-1 animate-ping"></div>
 			</div>
 			<div data-aos="fade-down" class="md:w-5/12 mt-20 md:mt-0 text-quinary">
-				<h1 class="text-2xl font-semibold text-quaternary lg:pr-40"><span class="text-secondary">Coding Languages:</span> The Core of Modern Education</h1>
+				<h1 class="text-2xl font-semibold text-quaternary lg:pr-40"><span class="text-secondary">
+				@php
+					$titleParts = explode(':', $sections[3]['title'], 2);
+					$firstPart = $titleParts[0] . ':';
+					$secondPart = count($titleParts) > 1 ? $titleParts[1] : '';
+				@endphp
+				{{ $firstPart }}</span> {{ $secondPart }}</h1>
 				<div class="flex items-center space-x-5 my-5">
 					<div class="flex-shrink bg-white shadow-lg rounded-full p-3 flex items-center justify-center">
 						<x-icon class="text-quaternary" name="document" solid mini/>
@@ -107,11 +135,18 @@
 		<!-- Palabras -->
 		<section class="flex flex-col md:flex-row items-center md:space-x-10 my-40">
 			<div data-aos="fade-right" class="md:w-1/2">
-				<h1 class="text-quaternary font-semibold text-3xl lg:pr-56">Learning <span class="text-secondary">Spanish with Palabras</span></h1>
-        		<p class="text-quinary my-4 lg:pr-32">At Palabras, we simplify Spanish learning through dynamic methods, making language acquisition both effective and enjoyable.</p>
-				<a href="https://palabras-languageschool.com/">
+				<h1 class="text-quaternary font-semibold text-3xl lg:pr-56">
+					@php
+						$titleWords = explode(' ', $sections[4]['title']);
+						$firstWord = array_shift($titleWords);
+						$remainingWords = implode(' ', $titleWords);
+					@endphp
+					<span class="text-secondary">{{ $firstWord }}</span> {{ $remainingWords }}
+				</h1>
+        		<p class="text-quinary my-4 lg:pr-32">{{ $sections[4]['description'] }}</p>
+				<a href="{{$sections[4]['button_url']}}">
 					<button class="bg-quinary text-white text-sm font-bold rounded-full py-4 px-9 focus:outline-none transform transition hover:scale-110 duration-300 ease-in-out mt-5">
-						Explore Palabras
+						{{ $sections[4]['button_text'] }}
 					</button>
 				</a>
 			</div>
@@ -124,16 +159,30 @@
 				<img class="md:w-11/12" src="img/diseno.png">
 			</div>
 			<div data-aos="fade-left" class="md:w-6/12 md:transform md:-translate-y-20">
-				<h1 class="font-semibold text-quaternary text-3xl">Dual <span class="text-secondary">Expertise</span></h1>
-        		<p class="text-quinary my-5">Our platforms specialize in distinct fields—Spanish language with native speakers and programming by coding experts. We ensure excellence in education across both disciplines.</p>
+				<h1 class="font-semibold text-quaternary text-3xl">
+				@php
+						$titleWords = explode(' ', $sections[5]['title']);
+						$firstWord = array_shift($titleWords);
+						$remainingWords = implode(' ', $titleWords);
+					@endphp
+					<span class="text-secondary">{{ $firstWord }}</span> {{ $remainingWords }}
+				</h1>
+        		<p class="text-quinary my-5">{{ $sections[5]['description'] }}</p>
 			</div>
 		</section>
 
 		<!-- Educational Innovation -->
 		<section class="flex flex-col md:flex-row items-center my-40">
 			<div data-aos="fade-right" class="md:w-5/12">
-				<h1 class="text-quaternary font-semibold text-3xl leading-tight lg:pr-32">Educational <span class="text-secondary">Innovation</span> at Palabras & Algorithmics</h1>
-        		<p class="my-5 lg:pr-14">Palabras and Algorithmics offer comprehensive tools for language and coding education, streamlining class management with rosters, attendance tracking, and real-time grading to enhance teaching efficiency and student engagement.</p>
+				<h1 class="text-quaternary font-semibold text-3xl leading-tight lg:pr-32">
+					@php
+						$titleWords = explode(' ', $sections[6]['title']);
+						$firstWord = array_shift($titleWords);
+						$remainingWords = implode(' ', $titleWords);
+					@endphp
+					<span class="text-secondary">{{ $firstWord }}</span> {{ $remainingWords }}
+				</h1>
+        		<p class="my-5 lg:pr-14">{{ $sections[6]['description'] }}</p>
 			</div>
 			<img data-aos="fade-left" class="md:w-7/12" src="img/gradebook.png">
 		</section>
@@ -148,8 +197,17 @@
 					<span class="border border-gray-300 w-14 absolute"></span>
 					<h1 class="text-gray-400 tracking-widest text-sm">PROGRAMMING LANGUAGES</h1>
 				</div>
-				<h1 class="font-semibold text-quaternary text-2xl lg:pr-40">Mastering Key Technologies: <span class="text-secondary">From Python to JavaScript</span></h1>
-				<p class="text-quinary my-5 lg:pr-20">Our curriculum covers a wide range of programming languages essential for modern development, including Python, JavaScript, HTML, and CSS, equipping students with the skills needed for today's tech-driven world.</p>
+				@php
+				$titleParts = explode(':', $sections[7]['title'], 2); // Divide en 2 partes usando ':'
+				$firstPart = trim($titleParts[0]) . ':'; // Primer parte (antes de ':') + añadir ':' al final
+				$secondPart = trim($titleParts[1] ?? ''); // Segunda parte (después de ':'), usa '??' para manejar casos sin ':'
+				@endphp
+
+				<h1 class="font-semibold text-quaternary text-2xl lg:pr-40">
+				{{ $firstPart }} <span class="text-secondary">{{ $secondPart }}</span>
+				</h1>
+
+				<p class="text-quinary my-5 lg:pr-20">{{ $sections[7]['description'] }}</p>
 			</div>
 		</section>
 
@@ -157,10 +215,10 @@
 		<section class="max-w-screen-xl mx-auto px-5 my-40 bg-white min-h-sceen">
 			<div class="flex flex-col items-center">
 				<h2 class="font-bold text-5xl mt-5 tracking-tight text-quaternary">
-					FAQ
+					{{ $sections[8]['title'] }}
 				</h2>
 				<p class="text-neutral-500 text-xl mt-3">
-					Frequenty asked questions
+					{{ $sections[8]['description'] }}
 				</p>
 			</div>
 			<div class="grid divide-y divide-neutral-200 max-w-xl mx-auto mt-8">

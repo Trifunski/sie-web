@@ -4,10 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Models\ContactPage;
 use App\Mail\Contact;
 
 class ContactController extends Controller
 {
+
+    public function index()
+    {
+
+        $contactData = ContactPage::all();
+
+        $contactData = $contactData->toArray();
+
+        return view('contact')->with('contactData', $contactData);
+    }
+
     public function send(Request $request)
     {
 /*         dd($request->all()); */

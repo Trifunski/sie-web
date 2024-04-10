@@ -6,6 +6,7 @@ use Filament\Pages\Page;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components;
+use Filament\Notifications\Notification;
 
 use App\Models\Section as ModelsSection;
 
@@ -33,6 +34,8 @@ class Home extends Page
     public $InnovativeDescription;
     public $ProgrammingTitle;
     public $ProgrammingDescription;
+    public $QuestionsTitle;
+    public $QuestionsDescription;
     public $Questions;
     public $Answer;
 
@@ -83,6 +86,7 @@ class Home extends Page
         $this->InnovativeDescription = $this->data['InnovativeTeaching']['description'];
         $this->ProgrammingTitle = $this->data['ProgrammingMastery']['title'];
         $this->ProgrammingDescription = $this->data['ProgrammingMastery']['description'];
+        $this->Questions = $this->data['FAQSection']['faqs'];
     } 
 
     protected function getFormSchema(): array
@@ -194,6 +198,12 @@ class Home extends Page
                 ]),
             Section::make('FAQSection')
                 ->schema([
+                    Components\TextInput::make('QuestionsTitle')
+                        ->label('Title')
+                        ->placeholder('Title'),
+                    Components\Textarea::make('QuestionsDescription')
+                        ->label('Description')
+                        ->placeholder('Description'),
                     Components\Repeater::make('Questions')
                         ->schema([
                             Components\TextInput::make('Question')
@@ -211,7 +221,54 @@ class Home extends Page
 
     public function save()
     {
-        
+        $this->validate(
+            [
+                'Herotitle' => 'required',
+                'HeroDescription' => 'required',
+                'HeroButtonText' => 'required',
+                'HeroButtonLink' => 'required',
+                'FeatureTitle' => 'required',
+                'FeatureDescription' => 'required',
+                'DualFocusTitle' => 'required',
+                'DualFocusDescription' => 'required',
+                'CoreSkillsTitle' => 'required',
+                'LanguageTitle' => 'required',
+                'LanguageDescription' => 'required',
+                'LanguageButtonText' => 'required',
+                'LanguageButtonLink' => 'required',
+                'TechTitle' => 'required',
+                'TechDescription' => 'required',
+                'InnovativeTitle' => 'required',
+                'InnovativeDescription' => 'required',
+                'ProgrammingTitle' => 'required',
+                'ProgrammingDescription' => 'required',
+                'QuestionsTitle' => 'required',
+                'QuestionsDescription' => 'required',
+            ]
+        );
+
+        $sections = [
+            ['title' => 'HeroBanner', 'data' => ['title' => $this->Herotitle, 'description' => $this->HeroDescription, 'button_text' => $this->HeroButtonText, 'button_url' => $this->HeroButtonLink]],
+            ['title' => 'FeatureOverview', 'data' => ['title' => $this->FeatureTitle, 'description' => $this->FeatureDescription]],
+            ['title' => 'DualFocus', 'data' => ['title' => $this->DualFocusTitle, 'description' => $this->DualFocusDescription]],
+            ['title' => 'CoreSkills', 'data' => ['title' => $this->CoreSkillsTitle]],
+            ['title' => 'LanguageLearning', 'data' => ['title' => $this->LanguageTitle, 'description' => $this->LanguageDescription, 'button_text' => $this->LanguageButtonText, 'button_url' => $this->LanguageButtonLink]],
+            ['title' => 'TechEducation', 'data' => ['title' => $this->TechTitle, 'description' => $this->TechDescription]],
+            ['title' => 'InnovativeTeaching', 'data' => ['title' => $this->InnovativeTitle, 'description' => $this->InnovativeDescription]],
+            ['title' => 'ProgrammingMastery', 'data' => ['title' => $this->ProgrammingTitle, 'description' => $this->ProgrammingDescription]],
+            ['title' => 'FAQSection', 'data' => ['title' => $this->QuestionsTitle, 'description' => $this->QuestionsDescription]],
+        ];
+
+        foreach ($sections as $section) {
+            $sectionModel = ModelsSection::where('name', $section['title'])->first();
+            $sectionModel->update($section['data']);
+        }
+
+        Notification::make('Home Page Updated')
+            ->title('Guardado Correctamente!')
+            ->icon('heroicon-o-document-text')
+            ->send();
+
     }
 
 }

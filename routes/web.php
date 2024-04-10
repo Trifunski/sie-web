@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,10 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index']);
 
-Route::view('/about', 'about');
-Route::view('/contact', 'contact');
 Route::view('/emails/contact', 'emails.contact');
+
+Route::get('/contact', [ContactController::class, 'index']);
 
 Route::get('/contact1', [ContactController::class, 'send']);

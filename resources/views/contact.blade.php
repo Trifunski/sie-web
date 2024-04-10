@@ -24,8 +24,8 @@
                         </div>
                         <div class="ml-6 grow">
                             <!-- Texto #1 -->
-                            <p class="text-lg font-semibold text-gray-700">Address</p>
-                            <p class="mt-2 text-sm text-gray-500">Calle Antonio María Manrique, 3, 35011 Las Palmas de Gran Canaria, Las Palmas</p>
+                            <p class="text-lg font-semibold text-gray-700">{{ $contactData[0]['contact_title_1'] }}</p>
+                            <p class="mt-2 text-sm text-gray-500">{{ $contactData[0]['contact_description_1'] }}</p>
                         </div>
                     </div>
                 </div>
@@ -40,8 +40,8 @@
                         </div>
                         <div class="ml-6 grow">
                             <!-- Texto #2 -->
-                            <p class="text-lg font-semibold text-gray-700">Working Hours</p>
-                            <p class="mt-2 text-sm text-gray-500">Monday - Friday: 9:00 AM - 5:00 PM</p>
+                            <p class="text-lg font-semibold text-gray-700">{{ $contactData[0]['contact_title_2'] }}</p>
+                            <p class="mt-2 text-sm text-gray-500">{{ $contactData[0]['contact_description_2'] }}</p>
                         </div>
                     </div>
                 </div>
@@ -56,8 +56,8 @@
                         </div>
                         <div class="ml-6 grow">
                             <!-- Texto #3 -->
-                            <p class="text-lg font-semibold text-gray-700">Call us</p>
-                            <p class="mt-2 text-sm text-gray-500">+34 928 45 45 45</p>
+                            <p class="text-lg font-semibold text-gray-700">{{ $contactData[0]['contact_title_3'] }}</p>
+                            <p class="mt-2 text-sm text-gray-500">{{ $contactData[0]['contact_description_3'] }}</p>
                         </div>
                     </div>
                 </div>
@@ -72,8 +72,8 @@
                         </div>
                         <div class="ml-6 grow">
                             <!-- Texto #4 -->
-                            <p class="text-lg font-semibold text-gray-700">Write to us</p>
-                            <p class="mt-2 text-sm text-gray-500">example@example.com</p>
+                            <p class="text-lg font-semibold text-gray-700">{{ $contactData[0]['contact_title_4'] }}</p>
+                            <p class="mt-2 text-sm text-gray-500">{{ $contactData[0]['contact_description_4'] }}</p>
                         </div>
                     </div>
                 </div>
