@@ -1,0 +1,57 @@
+Landing--------------------------->
+1-
+title:
+description: Join our global community for top Spanish and coding courses for all ages.
+button-text: Contact us
+button-link: /contact
+
+2.-
+title: Empowering Future Generations Together
+description: Uniting Language and Tech: Over 1.1 million learners and global companies choose us for growth.
+
+3.-
+title: Blending Languages and Tech: Like a classroom, but boundless.
+description: Our integrated platform ensures efficient management of schedules, attendance, and more, embodying the flexibility and security of modern education.
+
+4.- 
+title: Coding Languages: The Core of Modern Education
+
+5.- 
+title: Learning Spanish with Palabras
+description: At Palabras, we simplify Spanish learning through dynamic methods, making language acquisition both effective and enjoyable
+button-text: Explore Palabras
+button-link: https://palabras-languageschool.com/
+
+6.- 
+title: Dual Expertise
+description: Our platforms specialize in distinct fields—Spanish language with native speakers and programming by coding experts. We ensure excellence in education across both disciplines.
+
+7.- 
+title: Educational Innovation at Palabras & Algorithmics
+description: Palabras and Algorithmics offer comprehensive tools for language and coding education, streamlining class management with rosters, attendance tracking, and real-time grading to enhance teaching efficiency and student engagement.
+
+8.- 
+title: Mastering Key Technologies: From Python to JavaScript
+description: Our curriculum covers a wide range of programming languages essential for modern development, including Python, JavaScript, HTML, and CSS, equipping students with the skills needed for today's tech-driven world.
+
+9.- 
+title: FAQ
+description: Frequenty asked questions
+
+Contact Page-------------->
+
+1.- 
+title: Address
+description: Calle Antonio María Manrique, 3, 35011 Las Palmas de Gran Canaria, Las Palmas
+
+2.-
+title: Working Hours
+description: Monday - Friday: 9:00 AM - 5:00 PM
+
+3.- 
+title: Call us
+description: +34 928 45 45 45
+
+4.- 
+title: Write us
+description: example@example.com
